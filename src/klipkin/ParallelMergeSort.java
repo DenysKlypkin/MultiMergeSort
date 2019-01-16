@@ -1,9 +1,5 @@
 package klipkin;
 
-import com.sun.jdi.ThreadReference;
-
-import java.util.Arrays;
-
 public class ParallelMergeSort extends Thread {
 
 
