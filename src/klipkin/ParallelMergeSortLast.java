@@ -26,17 +26,13 @@ public class ParallelMergeSortLast {
         else {
             int mid = lo + (hi - lo) / 2;
             if(numberOfThreadLevel>0){
-                Thread left = new Thread(new Runnable() {
-                    public void run() {
-                        System.out.println("Left "+numberOfThreadLevel/2);
-                        ParallelMergeSortLast.sort(a, aux, lo, mid,numberOfThreadLevel/2);
-                    }
+                Thread left = new Thread(() -> {
+                    System.out.println("Left "+numberOfThreadLevel/2);
+                    ParallelMergeSortLast.sort(a, aux, lo, mid,numberOfThreadLevel/2);
                 });
-                Thread right = new Thread(new Runnable() {
-                    public void run() {
-                        System.out.println("Right "+numberOfThreadLevel/2);
-                        ParallelMergeSortLast.sort(a, aux, mid + 1, hi, numberOfThreadLevel/2);
-                    }
+                Thread right = new Thread(() -> {
+                    System.out.println("Right "+numberOfThreadLevel/2);
+                    ParallelMergeSortLast.sort(a, aux, mid + 1, hi, numberOfThreadLevel/2);
                 });
                 left.start();
                 right.start();
